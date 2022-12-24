@@ -32,6 +32,10 @@ describe('Github page tests', () => {
     });
 
     test('The page contains Sign in button', async () => {
+        await page.goto('https://github.com/team', {
+            waitUntil: 'load',
+            timeout: 10000,
+        });
         const btnSelector = '.btn-large-mktg.btn-mktg';
         await page.waitForSelector(btnSelector, {
             visible: true,
