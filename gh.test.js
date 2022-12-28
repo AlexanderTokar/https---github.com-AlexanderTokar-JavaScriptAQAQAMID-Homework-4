@@ -32,10 +32,6 @@ describe('Github page tests', () => {
     });
 
     test('The page contains Sign in button', async () => {
-        await page.goto('https://github.com/team', {
-            waitUntil: 'load',
-            timeout: 10000,
-        });
         const btnSelector = '.btn-large-mktg.btn-mktg';
         await page.waitForSelector(btnSelector, {
             visible: true,
@@ -43,7 +39,9 @@ describe('Github page tests', () => {
         const actual = await page.$eval(btnSelector, link => link.textContent);
         expect(actual).toContain('Get started with Team');
     });
+});
 
+describe('Additional Github page tests', () => {
     test('Second h1 header content', async () => {
         await page.goto('https://github.com/marketplace/', {
             waitUntil: 'load',
